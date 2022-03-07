@@ -289,6 +289,11 @@ def train(train_loader, model, optimizer, epoch, lr_schedule, queue):
         loss = 0
         for i, crop_id in enumerate(args.crops_for_assign):
             with torch.no_grad():
+                # crop_id가 어떤식의 구조로 되어 있는지는 살펴봐야한다.
+                # 예를 들어, bs = 3, crop = 3x3 이면, 0~8 > crop_id = 0
+                #    i) bs * crop_id = 3*0 = 0
+                #   ii) bs * (crop_id+1) = 3*(0+1) = 3*0+3*1 = 3
+                #  iii) output[bs * crop_id: bs * (crop_id + 1)] = output[0:3]
                 out = output[bs * crop_id: bs * (crop_id + 1)].detach()
 
                 # time to use the queue
