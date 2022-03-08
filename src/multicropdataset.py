@@ -20,7 +20,7 @@ class MultiCropDataset(datasets.ImageFolder):
         self,
         data_path,
         size_crops,
-        nmb_crops,
+        nmb_crops, # [2, 6]
         min_scale_crops,
         max_scale_crops,
         size_dataset=-1,
