@@ -19,7 +19,7 @@ class MultiCropDataset(datasets.ImageFolder):
     def __init__(
         self,
         data_path,
-        size_crops,
+        size_crops, # [224 96]
         nmb_crops, # [2, 6]
         min_scale_crops,
         max_scale_crops,
